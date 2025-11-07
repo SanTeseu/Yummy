@@ -30,7 +30,7 @@ export default function Home() {
 
     // fetch attendance for date
     const { data: att } = await supabase.from('attendance').select('employee_id,present,meal_type').eq('date', date)
-    const map: Record<string,boolean> = {}
+    const map = {} as Record<string, boolean>
     (att || []).forEach((r:any)=>{ map[r.employee_id] = r.present })
     setAttendance(map)
   }
